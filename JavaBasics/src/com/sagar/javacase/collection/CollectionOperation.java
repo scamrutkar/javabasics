@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -17,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CollectionOperation {
 
 	public static void main(String[] args) {
+		
+		arraySetOperation();
 
 		hashSetOperation();
 		
@@ -32,6 +35,23 @@ public class CollectionOperation {
 	}
 
 	
+	private static void arraySetOperation() {
+		List<String> list = new ArrayList<>(5);
+		list.add("sagar");
+		list.add("nikhil");
+		list.add("vijay");
+		list.add("nitesh");
+		list.add("amar");
+		list.add("amrut");
+		
+		int var2 = 10;
+		int var3 = var2 + (var2 >> 1);
+		
+		System.out.println(var3);
+		
+	}
+
+
 	/**
 	 * Hashset allows null element 
 	 */
