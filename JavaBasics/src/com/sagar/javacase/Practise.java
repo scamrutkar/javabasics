@@ -1,5 +1,19 @@
 package com.sagar.javacase;
 
+class Test {
+
+	public static String foo(){
+		System.out.println("Test foo called");
+		return "";
+	}
+	
+	public static void main(String args[]){
+		Test obj = new Test();;
+		System.out.println(obj.foo());
+	}
+}
+
+
 public class Practise {
 	
 	public static void main(String[] args) {
