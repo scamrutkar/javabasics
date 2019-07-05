@@ -49,17 +49,13 @@ class Consumer1 extends Thread {
 
 	public void run() {
 		try {
-			while (!sharedQueue.isEmpty()) {
-				if (sharedQueue.size() > 5) {
-					int count = 5;
-					while (count != 0) {
-						Integer item = sharedQueue.take();
-						System.out.println(getName() + " consumed " + item);
-						count--;
-					}
-				}
+			while (true) {
+				Integer item = sharedQueue.take();
+				System.out.println(getName() + " consumed " + item);
 			}
-		} catch (InterruptedException e) {
+		} catch (
+
+		InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
