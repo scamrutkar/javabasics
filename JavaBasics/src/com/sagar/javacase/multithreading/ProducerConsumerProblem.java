@@ -73,7 +73,7 @@ class Consumer implements Runnable {
 		while (true) {
 			try {
 				consume();
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
