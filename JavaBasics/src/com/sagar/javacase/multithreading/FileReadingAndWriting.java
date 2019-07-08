@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class FileReadingAndWriting {
 
@@ -18,23 +16,16 @@ public class FileReadingAndWriting {
 		File dir = new File("E:\\SampleFiles");
 		File destination = new File("E:\\SampleFiles\\DestinationMultiThread.txt");
 		File[] files = dir.listFiles();
-		
-		ExecutorService executor = Executors.newFixedThreadPool(5);
-		
 		for (File file : files) {
 			Writer w1 = new Writer(file, destination);
-			
-			executor.submit(w1);
-			
-			/*
-			 * Thread t = new Thread(w1); t.setPriority(Thread.MAX_PRIORITY); t.start();
-			 */
+			Thread t = new Thread(w1);
+			t.setPriority(Thread.MAX_PRIORITY);
+			t.start();
 
 		}
 		long stopTime = System.nanoTime();
 
 		System.out.println("Total execution time is " + (stopTime - startTime));
-		executor.shutdown();
 
 	}
 
