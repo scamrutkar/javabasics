@@ -11,12 +11,28 @@ class Test {
 		Test obj = new Test();;
 		System.out.println(obj.foo());
 	}
+	
+	public void add(int a, double b) {
+		System.out.println("Add first int called");
+		System.out.println(a+b);
+	}
+	
+	public void add(double a, int b) {
+		System.out.println("Add first double called");
+		System.out.println(a+b);
+	}
 }
 
 
 public class Practise {
 	
 	public static void main(String[] args) {
+		
+		/*
+		 * Ambiguity exception while calling add method 
+		 * Test test = new Test();
+		 * test.add(12,5);
+		 */
 		
 		String a = "Test";
 		String b = new String("Test");
