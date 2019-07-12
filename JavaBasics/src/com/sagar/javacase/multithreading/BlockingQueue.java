@@ -49,9 +49,13 @@ class Consumer1 extends Thread {
 
 	public void run() {
 		try {
+			Thread.sleep(2000);
 			while (true) {
+				if(sharedQueue.isEmpty())
+					break;
 				Integer item = sharedQueue.take();
 				System.out.println(getName() + " consumed " + item);
+				Thread.sleep(200);
 			}
 		} catch (
 
