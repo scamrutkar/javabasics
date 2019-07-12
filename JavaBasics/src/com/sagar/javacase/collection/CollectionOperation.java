@@ -8,8 +8,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.sagar.javacase.Employee;
 
 /**
  * @author sagar
@@ -18,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CollectionOperation {
 
 	public static void main(String[] args) {
+		
+		userDefinedTreeSet();
 		
 		arraySetOperation();
 
@@ -29,12 +34,35 @@ public class CollectionOperation {
 		
 		failFastImplementation();
 		
-		HashSet<String> set = new HashSet<>();
-		
-		set.add("Sagar");
 	}
 
 	
+	private static void userDefinedTreeSet() {
+		
+		/*
+		 * You need to override hashCode() method if you are overriding equals() method.
+		 * If you don't do so and overrides only equals() method, it will generate two
+		 * different hashcodes for same object
+		 */		
+		TreeMap<Employee,String> set = new TreeMap<>();
+		
+		Employee e1 = new Employee(1,"Sagar","Oracle");
+		Employee e2 = new Employee(2,"Amar","KPMG");
+		Employee e3 = new Employee(1,"Sagar","Oracle");
+		
+		System.out.println("E1 Hashcode : "+e1.hashCode());
+		System.out.println("E3 Hashcode : "+e3.hashCode());
+		
+		set.put(e1,"Sagar");
+		set.put(e2,"Amar");
+		set.put(e3,"Nikhil");
+		
+		System.out.println(set);
+		System.out.println("***************************************************************************");
+		
+	}
+
+
 	private static void arraySetOperation() {
 		List<String> list = new ArrayList<>(5);
 		list.add("sagar");
@@ -76,7 +104,7 @@ public class CollectionOperation {
 		set.add("Sagar");
 		set.add("Rohit");
 		set.add("Amar");
-		
+
 		System.out.println(set);
 		}catch(Exception e) {
 			e.printStackTrace();

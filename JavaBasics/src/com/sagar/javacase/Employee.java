@@ -43,11 +43,14 @@ public class Employee implements Comparable<Employee>{
 	}
 
 	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", org=" + org + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((org == null) ? 0 : org.hashCode());
+		return result;
 	}
-
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -72,7 +75,10 @@ public class Employee implements Comparable<Employee>{
 			return false;
 		return true;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", org=" + org + "]";
+	}
+	
 }
