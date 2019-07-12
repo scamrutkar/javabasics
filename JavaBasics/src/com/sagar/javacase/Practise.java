@@ -1,5 +1,12 @@
 package com.sagar.javacase;
 
+class AbstractClass{
+	
+	static void staticMethod() {
+		System.out.println("In abstract class static method");
+	}
+}
+
 class Test {
 
 	public static String foo(){
