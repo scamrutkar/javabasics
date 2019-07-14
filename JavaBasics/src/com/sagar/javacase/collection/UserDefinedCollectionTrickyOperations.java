@@ -1,13 +1,21 @@
 package com.sagar.javacase.collection;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.TreeMap;
 
-class Person{
-	
+/*
+ * 1. If we don't override hashcode, by default object always creates new hashcode for each object. 
+ * Hence you might be getting error while retrieving elements from colletion.
+ * 2. If we don't override equals, then by default Object class always checks for same reference. 
+ */
+
+class Person {
+
 	private String id;
 	private String name;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -60,33 +68,34 @@ class Person{
 		this.id = id;
 		this.name = name;
 	}
-	
-	
+
 }
 
 public class UserDefinedCollectionTrickyOperations {
 
 	public static void main(String[] args) {
-		//HashMap
-		HashMap<Person,String> map = new HashMap<>();
-		Person person = new Person("1","Sagar");
-		map.put(person,"Object1");
-		map.put(new Person("1","Sagar"),"Object2");
-		map.put(null, "Object3");
+
+		// HashMap
+		HashMap<Person, String> map = new HashMap<>();
+		Person person = new Person("1", "Sagar");
+		map.put(person, "Object1");
+		map.put(new Person("1", "Sagar"), "Object2");
+		map.put(person, "Object3");
 		System.out.println(map);
-		System.out.println(map.get(new Person("1","Sagar")));
-		
-		System.out.println("********************************************************************************************");
-		
-		//TreeMap
-		TreeMap<Person,String> treeMap = new TreeMap<>();
-		Person person1 = new Person("1","Sagar");
-		treeMap.put(person1,"Object1");
-		treeMap.put(new Person("1","Sagar"),"Object2");
+		System.out.println(map.get(new Person("1", "Sagar")));
+
+		System.out.println("*******************************************************************************");
+
+		// TreeMap
+
+		TreeMap<Person, String> treeMap = new TreeMap<>();
+		Person person1 = new Person("1", "Sagar");
+		treeMap.put(person1, "Object1");
+		treeMap.put(new Person("1", "Sagar"), "Object2");
 		treeMap.put(null, "Object3");
 		System.out.println(treeMap);
-		System.out.println(treeMap.get(new Person("1","Sagar")));
-		
+		System.out.println(treeMap.get(new Person("1", "Sagar")));
+
 	}
 
 }
