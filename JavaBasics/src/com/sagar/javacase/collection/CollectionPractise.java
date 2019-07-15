@@ -3,11 +3,19 @@ package com.sagar.javacase.collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class CollectionPractise {
 
 	public static void main(String[] args) {
+		
+		LinkedList<String> list = new LinkedList<>();
+		list.add("Sagar");
+		System.out.println(4 >> 1);
+		list.remove(1);
+		System.out.println(list);
+		
 		HashMap<String, String> map = new HashMap<>();
 		map.put("1", "Sagar");
 		map.put("2", "Amar");
