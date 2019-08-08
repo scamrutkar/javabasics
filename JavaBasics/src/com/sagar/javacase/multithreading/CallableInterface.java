@@ -24,6 +24,8 @@ public class CallableInterface {
 		for (Future<Integer> future : resultList) {
 			System.out.println("Future Result : " + future.get());
 		}
+		
+		executor.shutdown();
 	}
 
 }
