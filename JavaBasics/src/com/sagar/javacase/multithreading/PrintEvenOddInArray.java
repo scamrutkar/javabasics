@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class ThreadConcurrent {
 	int[] array;
-	AtomicInteger  counter;
+	AtomicInteger counter;
 	final ReentrantLock lock;
 	final Condition notEven;
 	final Condition notOdd;
@@ -104,15 +104,15 @@ public class PrintEvenOddInArray {
 		final ThreadConcurrent er = new ThreadConcurrent(array);
 		final PrintSeq ps = new PrintSeq(array);
 
-		/*
-		 * Thread t1 = new Thread(() -> ps.readEven()); Thread t2 = new Thread(() ->
-		 * ps.readOdd()); t1.start(); t2.start();
-		 */
+		Thread t1 = new Thread(() -> ps.readEven());
+		Thread t2 = new Thread(() -> ps.readOdd());
+		t1.start();
+		t2.start();
 
-		Thread t3 = new Thread(() -> er.checkSum());
-		Thread t4 = new Thread(() -> er.checkSum());
-		t3.start();
-		t4.start();
+		/*
+		 * Thread t3 = new Thread(() -> er.checkSum()); Thread t4 = new Thread(() ->
+		 * er.checkSum()); t3.start(); t4.start();
+		 */
 
 	}
 
