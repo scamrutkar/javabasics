@@ -16,4 +16,9 @@ public class Address {
         this.zipcode = zipcode;
     }
 
+	@Override
+	public String toString() {
+		return "Address [zipcode=" + zipcode + "]";
+	}
+
 }
