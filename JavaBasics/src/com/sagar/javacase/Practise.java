@@ -55,6 +55,8 @@ public class Practise {
 			System.out.println("b and c are same");
 		if(a == c)
 			System.out.println("a and c are same");
+		
+		System.out.println(a.substring(0, 2));
 
 	}
 
