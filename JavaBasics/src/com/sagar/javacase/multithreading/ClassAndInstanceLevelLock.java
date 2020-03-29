@@ -5,32 +5,20 @@ class ClassAndInstanceLevelLock {
 	public static void main(String[] args) {
 		final ClassAndInstanceLevelLock threadDemo1 = new ClassAndInstanceLevelLock();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				threadDemo1.getA();
-			}
+		new Thread(() -> {
+			threadDemo1.getA();
 		}).start();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				threadDemo1.getB();
-			}
+		new Thread(() -> {
+			threadDemo1.getB();
 		}).start();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				ClassAndInstanceLevelLock.getC();
-			}
+		new Thread(() -> {
+			ClassAndInstanceLevelLock.getC();
 		}).start();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				ClassAndInstanceLevelLock.getD();
-			}
+		new Thread(() -> {
+			ClassAndInstanceLevelLock.getD();
 		}).start();
 
 	}
@@ -39,7 +27,7 @@ class ClassAndInstanceLevelLock {
 	public synchronized void getA() {
 		System.out.println("ThreadDemo.getA() :" + Thread.currentThread().getName() + " enetered");
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			wait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -50,7 +38,7 @@ class ClassAndInstanceLevelLock {
 	public synchronized void getB() {
 		System.out.println("ThreadDemo.getB() :" + Thread.currentThread().getName() + " enetered");
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			notify();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -82,4 +70,3 @@ class ClassAndInstanceLevelLock {
 	}
 
 }
-
