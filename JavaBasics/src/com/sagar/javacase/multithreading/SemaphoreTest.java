@@ -62,7 +62,18 @@ class SemaphoreConsumer implements Runnable {
 public class SemaphoreTest {
 	public static void main(String[] args) {
 		SharedResource shared = new SharedResource();
-		new SemaphoreConsumer(shared);
-		new SemaphoreProducer(shared);
+		//new SemaphoreConsumer(shared);
+		//new SemaphoreProducer(shared);
+
+		new Thread(() -> {
+			for (int i = 0; i < 5; i++)
+				shared.put(i);
+		}).start();
+		
+		new Thread(() -> {
+			for (int i = 0; i < 5; i++)
+				shared.get();
+		}).start();
+
 	}
 }
