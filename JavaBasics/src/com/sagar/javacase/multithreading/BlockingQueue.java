@@ -4,14 +4,53 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class BlockingQueue {
 
+	static int i = 0;
+
 	public static void main(String[] args) {
 		LinkedBlockingQueue<Integer> sharedQ = new LinkedBlockingQueue<Integer>();
 
+		// Java7 way
 		Producer1 p = new Producer1(sharedQ);
 		Consumer1 c = new Consumer1(sharedQ);
 
 		p.start();
 		c.start();
+
+		// Java8 way
+		final Runnable producer = () -> {
+			while (true) {
+				sharedQ.add(createItem());
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			}
+		};
+
+		final Runnable consumer = () -> {
+			while (true)
+				try {
+					int x = sharedQ.take();
+					Thread.sleep(1000);
+					System.out.println("Consumed: " + x);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+		};
+
+		Thread t1 = new Thread(producer);
+		Thread t2 = new Thread(consumer);
+		t1.start();
+		t2.start();
+
+	}
+
+	private static Integer createItem() {
+		i += 1;
+		System.out.println("Produced: " + i);
+		return i;
 	}
 
 }
@@ -49,9 +88,9 @@ class Consumer1 extends Thread {
 
 	public void run() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			while (true) {
-				if(sharedQueue.isEmpty())
+				if (sharedQueue.isEmpty())
 					break;
 				Integer item = sharedQueue.take();
 				System.out.println(getName() + " consumed " + item);
