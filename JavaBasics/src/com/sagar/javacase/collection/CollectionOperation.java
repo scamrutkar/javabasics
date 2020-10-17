@@ -56,6 +56,7 @@ public class CollectionOperation {
 		set.put(e1,"Sagar");
 		set.put(e2,"Amar");
 		set.put(e3,"Nikhil");
+		set.put(e3,null);
 		
 		System.out.println(set);
 		System.out.println("***************************************************************************");
